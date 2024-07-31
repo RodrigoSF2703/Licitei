@@ -1,28 +1,33 @@
-Automação Licitei #1
+## Automação Licitei #
 Repositório com objetivo de atender aos requisitos propostos na automação para a empresa Licitei.
 
-Tecnologias utilizadas
-Python
-BotCity
+## Tecnologias utilizadas
+- Python
+- BotCity
 
 
-Requisitos
-Python
-Google Chrome
-IDE para desenvolvimento
+## Requisitos
+- Python
+- Google Chrome
+- IDE para desenvolvimento
 
-Iniciar aplicação localmente e ativr ambiente virtual
-PyCharm:
+## Iniciar aplicação localmente e ativr ambiente virtual
+**PyCharm:**
+```
 Clica na engrenagem > vá em settings > Python Interpreter > Add Interpreter > Add Local Interpreter > Confirme New > Okay > Apply.
-Visual Studio Code
+```
+**Visual Studio Code**
+```
 python -m venv nome_do_ambiente (recomendo venv)
 nome_do_ambiente\Scripts\activate
+```
+##  Comandos
+**Utilize os comandos abaixo para executar as ações desejadas:**
 
-Comandos
-Utilize os comandos abaixo para executar as ações desejadas:
-
-Instalar depêndencias do projeto
+**Instalar depêndencias do projeto**
+```
 pip install -r liciteiCompras/requirements.txt 
-
-Agenda evolutiva do projeto:
- 
+```
+## Agenda evolutiva do projeto:
+ - [x] 
+ - [ ] 
