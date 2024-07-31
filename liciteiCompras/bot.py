@@ -46,6 +46,7 @@ def fetch_api_data(url, key):
 
 
 # Função para configurar o WebBot com as opções necessárias
+# Função para configurar o WebBot com as opções necessárias
 def setup_bot():
     chrome_options = webdriver.ChromeOptions()
     chrome_options.add_argument("--disable-blink-features=AutomationControlled")
@@ -54,11 +55,18 @@ def setup_bot():
     chrome_options.add_experimental_option('useAutomationExtension', False)
 
     # Redefine o User-Agent para parecer uma navegação normal
-    chrome_options.add_argument("user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) "
-                                "AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.124 Safari/537.36")
+    chrome_options.add_argument(
+        "user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.124 Safari/537.36")
 
-    bot = WebBot()
-    bot.driver = webdriver.Chrome(executable_path=ChromeDriverManager().install(), options=chrome_options)
+    # Instala o ChromeDriver e retorna o caminho do executável
+    chrome_driver_path = ChromeDriverManager().install()
+
+    # Inicializa o WebBot com o navegador Chrome e as opções configuradas
+    bot = WebBot(headless=False)
+    bot.driver_path = chrome_driver_path
+    bot.chrome_options = chrome_options
+    bot.start_browser()
+
 
     return bot
 
