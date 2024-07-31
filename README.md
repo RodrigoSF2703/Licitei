@@ -13,13 +13,14 @@ Repositório com objetivo de atender aos requisitos propostos na automação par
 
 ## Iniciar aplicação localmente e ativr ambiente virtual
 **PyCharm:**
-```
 Clica na engrenagem > vá em settings > Python Interpreter > Add Interpreter > Add Local Interpreter > Confirme New > Okay > Apply.
-```
+
 **Visual Studio Code**
 ```
-python -m venv nome_do_ambiente (recomendo venv)
-nome_do_ambiente\Scripts\activate
+python -m venv .venv
+```
+```
+.venv\Scripts\activate
 ```
 ##  Comandos
 **Utilize os comandos abaixo para executar as ações desejadas:**
