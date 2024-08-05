@@ -14,6 +14,8 @@ from selenium.webdriver.common.action_chains import ActionChains
 from selenium.webdriver.chrome.service import Service as ChromeService
 from webdriver_manager.chrome import ChromeDriverManager
 from selenium import webdriver
+from humanize import *
+
 
 # Configuração de logs para registrar informações importantes durante a execução
 logging.basicConfig(level=logging.INFO)
@@ -45,7 +47,7 @@ def fetch_api_data(url, key):
         return None
 
 
-# Função para configurar o WebBot com as opções necessárias
+'''
 # Função para configurar o WebBot com as opções necessárias
 def setup_bot():
     chrome_options = webdriver.ChromeOptions()
@@ -56,7 +58,8 @@ def setup_bot():
 
     # Redefine o User-Agent para parecer uma navegação normal
     chrome_options.add_argument(
-        "user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.124 Safari/537.36")
+        "user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) "
+        "Chrome/91.0.4472.124 Safari/537.36")
 
     # Instala o ChromeDriver e retorna o caminho do executável
     chrome_driver_path = ChromeDriverManager().install()
@@ -67,13 +70,13 @@ def setup_bot():
     bot.chrome_options = chrome_options
     bot.start_browser()
 
-
     return bot
-
-
+'''
+'''
 # Função para desativar a detecção de automação
 def disable_automation_detection(bot):
     bot.driver.execute_script("Object.defineProperty(navigator, 'webdriver', {get: () => undefined})")
+'''
 
 
 # Função para adicionar um atraso aleatório
@@ -103,10 +106,12 @@ def human_wait_and_click(bot, xpath, label):
         return False
 
 
+'''
 # Função para simular uma navegação humana ao carregar um URL
 def browse_like_human(bot, url):
     bot.driver.get(url)
     time.sleep(random.uniform(2, 5))  # Espera aleatória para simular leitura da página
+'''
 
 
 # Função para selecionar o certificado digital desejado
@@ -169,10 +174,11 @@ def main():
 
     logger.info(f"Task ID is: {execution.task_id}")
     logger.info(f"Task Parameters are: {execution.parameters}")
-
+    '''
     # Configura e desativa a detecção de automação no bot
     bot = setup_bot()
     disable_automation_detection(bot)
+    '''
     try:
         # Busca dados da API
         api_data = fetch_api_data(API_URL, API_KEY)
@@ -191,13 +197,17 @@ def main():
                 logger.info(f"Quantidade de itens: {quantidade_items}")
 
                 # Acessa o site gov.br/compras simulando navegação humana
-                browse_like_human(bot, 'https://www.gov.br/compras/pt-br')
+                '''browse_like_human(bot, 'https://www.gov.br/compras/pt-br')
 
                 # Realiza os cliques necessários para login
                 if not human_wait_and_click(bot, '//*[@id="barra-sso"]', 'Entrar com o gov.br'):
                     return
                 if not human_wait_and_click(bot, '//*[@id="login-certificate"]', 'Login com Certificado Digital'):
-                    return
+                    return'''
+
+                open_chrome()
+                insert_target_url()
+                page_navigation()
 
                 # Seleciona o certificado digital
                 if not select_certificate(bot, assunto):
@@ -212,7 +222,8 @@ def main():
             logger.warning(f"CPF não encontrado nos detalhes dos acordos.")
     finally:
         # Fecha o navegador ao final da execução
-        bot.driver.quit()
+        # bot.driver.quit()
+        pass
 
 
 if __name__ == '__main__':
